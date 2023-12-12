@@ -7,11 +7,11 @@ export default function Root() {
       <header className="bg-blue-700 text-white">
         <h1 className="text-3xl p-4">Document Generator App</h1>
       </header>
-      <main className="grid grid-cols-4 gap-4 max-w-6xl mx-auto">
-            <InvoiceForm />
-            <InvoiceSettings />
+      <main className="grid grid-cols-12 gap-4 p-4 mx-auto w-full">
+        <InvoiceForm />
+        <InvoiceSettings />
       </main>
-      <footer>
+      <footer className="p-4">
         <p>&copy; 2023 Formify</p>
       </footer>
     </div>

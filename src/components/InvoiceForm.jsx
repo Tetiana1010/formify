@@ -1,6 +1,14 @@
+import FromForm from "./FromForm";
+import ToForm from './ToForm';
+import Note from "./Note";
+
 const InvoiceForm = () => {
-    return (<div className="col-span-3">
-        Form
+    return (<div className="col-span-9 flex flex-col gap-8 bg-white p-4 divide-y-2 shadow-sm">
+        <div className="flex gap-8">
+            <FromForm />
+            <ToForm />
+        </div>
+        <Note />
     </div> );
 }
  

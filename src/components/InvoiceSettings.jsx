@@ -1,5 +1,5 @@
 const InvoiceForm = () => {
-    return (<div className="col-span-1">
+    return (<div className="col-span-3">
        Setting
     </div> );
 }
