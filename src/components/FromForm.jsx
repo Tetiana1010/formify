@@ -1,3 +1,5 @@
+import AdressFieldset from './AdressFieldset';
+
 const FromForm = (e) => {
     return (
         <div className="flex-1">
@@ -6,21 +8,22 @@ const FromForm = (e) => {
                 <fieldset className="flex flex-col">
                     <label>
                         Name
-                        <input type="text" name="name" autocomplete="name" />
+                        <input type="text" name="name" autoComplete="name" />
                     </label>
                     <label>
                         Email
-                        <input type="email" name="email" autocomplete="email" />
+                        <input type="email" name="email" autoComplete="email" />
                     </label>
                     <label>
                         Address
-                        <input type="text" name="adress" autocomplete="street-address" />
+                        <input type="text" name="adress" autoComplete="street-address" />
                     </label>
                     <label>
                         Phone
-                        <input type="tel" name="phone" autocomplete="tel" />
+                        <input type="tel" name="phone" autoComplete="tel" />
                     </label>
                 </fieldset>
+                <AdressFieldset />
                 <fieldset className="flex flex-col pt-3">
                     <label>
                         Tax ID
