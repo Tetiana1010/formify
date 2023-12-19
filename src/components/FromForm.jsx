@@ -1,22 +1,51 @@
+import { useState } from 'react';
+
 import AdressFieldset from './AdressFieldset';
 
 const FromForm = (e) => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+
     return (
         <div className="flex-1">
             <h2 className="text-xl">From</h2>
             <form className="flex flex-col gap-4 mt-3 divide-y-2">
                 <fieldset className="flex flex-col">
-                    <label>
-                        Name
-                        <input type="text" name="name" autoComplete="name" />
-                    </label>
+                    <div className="flex gap-2">
+                        <label>
+                            First name
+                            <input
+                                type="text"
+                                name="firstName"
+                                autoComplete="given-name"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                required
+                            />
+                        </label>
+                        <label>
+                            Last name
+                            <input
+                                type="text"
+                                name="lastName"
+                                autoComplete="family-name"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
                     <label>
                         Email
-                        <input type="email" name="email" autoComplete="email" />
-                    </label>
-                    <label>
-                        Address
-                        <input type="text" name="adress" autoComplete="street-address" />
+                        <input
+                            type="email"
+                            name="email"
+                            autoComplete="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
                     </label>
                     <label>
                         Phone
