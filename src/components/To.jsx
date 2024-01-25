@@ -1,7 +1,10 @@
-const ToForm = (e) => {
+import ModalLauncher from './ModalLauncher.tsx'
+
+const To = (e) => {
     return (
         <div className="flex-1">
-            <h2 className="text-xl">To</h2>
+            <ModalLauncher userType='recipient' />
+            {/* <h2 className="text-xl">To</h2>
             <form className="flex flex-col mt-3">
                 <fieldset className="flex flex-col">
                     <div>
@@ -23,9 +26,9 @@ const ToForm = (e) => {
                         <input type="tel" name="phone" autoComplete="tel" />
                     </label>
                 </fieldset>
-            </form>
+            </form> */}
         </div>
     );
 };
 
-export default ToForm;
+export default To;
