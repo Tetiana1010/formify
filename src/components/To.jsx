@@ -1,10 +1,10 @@
-import ModalLauncher from './ModalLauncher.tsx'
+import ModalLauncher from "./ModalLauncher.tsx";
 
 const To = (e) => {
-    return (
-        <div className="flex-1">
-            <ModalLauncher userType='recipient' />
-            {/* <h2 className="text-xl">To</h2>
+  return (
+    <div className="flex-1">
+      <ModalLauncher userType="recipient" />
+      {/* <h2 className="text-xl">To</h2>
             <form className="flex flex-col mt-3">
                 <fieldset className="flex flex-col">
                     <div>
@@ -27,8 +27,8 @@ const To = (e) => {
                     </label>
                 </fieldset>
             </form> */}
-        </div>
-    );
+    </div>
+  );
 };
 
 export default To;

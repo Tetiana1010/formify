@@ -1,17 +1,17 @@
 // import { useState } from 'react';
 
 // import AdressFieldset from './AdressFieldset';
-import ModalLauncher from './ModalLauncher.tsx'
+import ModalLauncher from "./ModalLauncher.tsx";
 
 const FromForm = (e) => {
-    // const [firstName, setFirstName] = useState('');
-    // const [lastName, setLastName] = useState('');
-    // const [email, setEmail] = useState('');
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
+  // const [email, setEmail] = useState('');
 
-    return (
-        <div className="flex-1">
-            <ModalLauncher userType='sender' />
-            {/* <form className="flex flex-col gap-4 mt-3 divide-y-2">
+  return (
+    <div className="flex-1">
+      <ModalLauncher userType="sender" />
+      {/* <form className="flex flex-col gap-4 mt-3 divide-y-2">
                 <fieldset className="flex flex-col">
                     <div className="flex gap-2">
                         <label>
@@ -65,8 +65,8 @@ const FromForm = (e) => {
                     </label>
                 </fieldset>
             </form> */}
-        </div>
-    );
+    </div>
+  );
 };
 
 export default FromForm;
