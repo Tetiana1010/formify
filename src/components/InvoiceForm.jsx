@@ -1,6 +1,7 @@
 import From from "./From";
 import To from "./To";
 import Note from "./Note";
+import Items from './Items'
 
 const InvoiceForm = () => {
   return (
@@ -9,6 +10,7 @@ const InvoiceForm = () => {
         <From />
         <To />
       </div>
+      <Items />
       <Note />
     </div>
   );
