@@ -1,79 +1,95 @@
 import { useState } from "react";
+import Item from "./Item";
+
+const initialItemValue = {
+  productName: '',
+  quantity: 1,
+  rate: 0,
+  description: '',
+}
 
 const Items = () => {
-  const [description, setDescription] = useState('');
-  const [quantity, setQuantity] = useState(1);
-  const [rate, setRate] = useState(0);
+  const [item, setItem] = useState(initialItemValue);
 
+  const [items, setItems] = useState([item]);
+
+  const handleItemChange = (index, e) => {
+    const { name, value } = e.target;
+  
+    setItems(prevItems => {
+      const updatedItems = [...prevItems];
+      updatedItems[index] = {
+        ...updatedItems[index],
+        [name]: name === 'rate' ? getNumber(value) : value
+      };
+      return updatedItems;
+    });
+  };
+  
   const getNumber = (value) => {
-
     let number = '';
-    let foundNonZiro = false;
-
+    let foundNonZero = false;
+  
     for(let i = 0; i < value.length; i++){
-      if (value[i] !== '0' || foundNonZiro){
+      if (value[i] !== '0' || foundNonZero){
         number += value[i];
-        foundNonZiro = true;
+        foundNonZero = true;
       }
     };
     return number || "0";
   };
+  
+  const addItem = () => {
+    setItems(prevItems => [...prevItems, item]);
+    setItem(initialItemValue);
+  };
 
-  console.log(description)
+  const deleteItem = (index) => {
+    setItems(prevState => {
+      const updatedItems = [...prevState];
+      updatedItems.splice(index, 1);
+      return updatedItems;
+    });
+  };
+
   return (
-    <div className="pt-4 w-full">
-      <table className="table-auto w-full">
-        <thead>
-          <tr className="bg-blue-700 text-white">
-            <th className="py-1 px-4 w-2/6">Item</th>
-            <th className="py-1 px-4 w-1/6">Quantity</th>
-            <th className="py-1 px-4 w-1/6">Rate</th>
-            <th className="py-1 px-4 w-1/6">Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="p-1">
-              <textarea 
-                placeholder="Description of service or product..."
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-                required
-              />
-            </td>
-            <td className="p-1">
-              <input
-                type="number"
-                onChange={(e) => setQuantity(e.target.value)}
-                value={quantity}
-                min={1} 
-                placeholder="1" 
-                step="any" 
-                autoComplete="off" 
-                required
-              />
-            </td>
-            <td className="p-1">
-              <input
-                type="number"
-                min={0}
-                placeholder="1"
-                step="any"
-                autoComplete="off"
-                required
-                inputMode="numeric"
-                value={rate}
-                onChange={(e) => setRate(getNumber(e.target.value))}
-              />
-            </td>
-            <td className="p-1 text-end">
-              $ {rate}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+      <div className="pt-4 w-full">
+        <table className="table-auto w-full">
+          <thead>
+            <tr className="bg-blue-700 text-white">
+              <th className="py-1 px-4 w-2/6">Item</th>
+              <th className="py-1 px-4 w-1/6">Quantity</th>
+              <th className="py-1 px-4 w-1/6">Rate</th>
+              <th className="py-1 px-4 w-1/6">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              items.map((item, index) => (
+                <Item 
+                  key={index}
+                  productName={item.productName}
+                  quantity={item.quantity}
+                  rate={item.rate}
+                  description={item.description}
+                  handleItemChange={(e) => handleItemChange(index, e)}
+                  deleteItem={(e) => deleteItem(index, e)}
+                />
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <button
+          onClick={addItem}
+          className="bg-blue-700 text-white rounded-md p-2 mt-2">
+          Add new invoice item
+        </button>
+      </div>
     </div>
-  )
+  );
 };
 
 export default Items;
