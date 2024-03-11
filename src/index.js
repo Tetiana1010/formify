@@ -6,6 +6,7 @@ import "./index.css";
 
 import Root from "./routes/root";
 import Invoice from "./routes/invoice";
+import { AppProvider } from "./context";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   </React.StrictMode>,
 );
