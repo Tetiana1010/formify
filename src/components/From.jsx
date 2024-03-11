@@ -1,4 +1,4 @@
-import ModalLauncher from "./ModalLauncher.tsx";
+import ModalLauncher from "./ModalLauncher";
 
 const FromForm = (e) => {
   return (

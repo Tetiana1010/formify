@@ -1,22 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../context";
 
-interface Store {
-  sender: {
-    company: string,
-    taxID: string,
-    IBAN: string,
-    PO: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-    website: string,
-  },
-  handleSenderChange: () => void,
-  resetSender: () => void,
-  handleSave: () => void,
-}
-
 const Modal = () => {
   const { sender, handleSenderChange, resetSender, handleSave, modal, setModal } = useContext(Context);
 

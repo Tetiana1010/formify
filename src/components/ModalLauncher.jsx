@@ -1,16 +1,13 @@
-import React, { useState } from "react";
-import Modal from "./Modal.tsx";
+import React from "react";
+import Modal from "./Modal";
 import { useContext } from "react";
-import { Context } from "../context/index.jsx";
+import { Context } from "../context/index";
 
-interface UserDetailsProps {
-  user: "sender" | "recipient";
-}
 
-const capitalizeFirstLetter = (word: string) =>
+const capitalizeFirstLetter = (word ) =>
   word.charAt(0).toUpperCase() + word.slice(1);
 
-const UserDetails: React.FC<UserDetailsProps> = ({ user }) => {
+const UserDetails  = ({ user }) => {
   const correctedUser = capitalizeFirstLetter(user);
   const { modal, setModal } = useContext(Context);
 
@@ -31,11 +28,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ user }) => {
   );
 };
 
-interface ModalLauncherProps {
-  userType: "sender" | "recipient";
-}
-
-const ModalLauncher: React.FC<ModalLauncherProps> = ({ userType }) => (
+const ModalLauncher = ({ userType }) => (
   <UserDetails user={userType} />
 );
 

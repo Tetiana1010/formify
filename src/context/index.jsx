@@ -14,11 +14,12 @@ const initialSender = {
   website: '',
 };
 
-const AppProvider = ({ children }) => {
+
+const AppProvider = ( {children}) => {
   const [modal, setModal] = useState(false);
   const [sender, setSender] = useState(initialSender);
 
-  const handleSenderChange = (e) => {
+  const handleSenderChange = (e)  => {
     const { value, name } = e.target;
     setSender(prevSender => ({ ...prevSender, [name]: value }));
   };
