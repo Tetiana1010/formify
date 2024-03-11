@@ -1,5 +1,6 @@
 import React, { useState, createContext } from "react";
 
+
 const Context = createContext(null);
 
 const initialSender = {
@@ -14,6 +15,7 @@ const initialSender = {
 };
 
 const AppProvider = ({ children }) => {
+  const [modal, setModal] = useState(false);
   const [sender, setSender] = useState(initialSender);
 
   const handleSenderChange = (e) => {
@@ -21,8 +23,9 @@ const AppProvider = ({ children }) => {
     setSender(prevSender => ({ ...prevSender, [name]: value }));
   };
 
-  const handleSave = () => {
-    console.log("Saved sender:", sender);
+  const handleSave = (e) => {
+    e.preventDefault();
+    setModal(!modal);
   };
 
   const resetSender = () => {
@@ -30,7 +33,16 @@ const AppProvider = ({ children }) => {
   };
 
   return (
-    <Context.Provider value={{ sender, handleSenderChange, resetSender, handleSave }}>
+    <Context.Provider value={
+        { 
+          modal,
+          setModal,
+          sender, 
+          handleSenderChange, 
+          resetSender, 
+          handleSave
+        }
+      }>
       {children}
     </Context.Provider>
   );
