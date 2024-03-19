@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Context } from "../context";
+import SenderContext from "../context/sender";
 
 const Modal = () => {
-  const { sender, handleSenderChange, resetSender, handleSave, modal, setModal } = useContext(Context);
+  const { sender, handleSenderChange, resetSender, handleSave, modal, setModal } = useContext(SenderContext);
 
   const renderInputField = (name, label, required = false) => (
     <label className="text-gray-600">
