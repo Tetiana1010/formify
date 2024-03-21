@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
 import SenderContext from "../context/sender";
+import ModalContext from '../context/modal';
 
-const Modal = () => {
-  const { sender, handleSenderChange, resetSender, handleSave, modal, setModal } = useContext(SenderContext);
+const SenderModal = () => {
+  const { sender, handleSenderChange, resetSender, handleSave } = useContext(SenderContext);
+  const { modal, setModal } = useContext(ModalContext);
 
-  const renderInputField = (name, label, required = false) => (
+  const renderInputField = (name, label, required = false, type = 'text') => (
     <label className="text-gray-600">
       {label} {required && <span className="text-red-800">*</span>}
       <input
-        type="text"
+        type={type}
         name={name}
         className="px-2"
         value={sender[name]}
@@ -26,13 +28,13 @@ const Modal = () => {
         </div>
         <hr />
         <form className="grid grid-cols-2 gap-4 pt-4">
-          {renderInputField("company", "Company / Sender name", true)}
+          {renderInputField("firstName", "First name", true)}
+          {renderInputField("lastName", "Last name", true)}
           {renderInputField("taxID", "Tax Registration Number", true)}
           {renderInputField("IBAN", "IBAN", true)}
           {renderInputField("PO", "PO", true)}
-          {renderInputField("firstName", "First name")}
-          {renderInputField("lastName", "Last name")}
-          {renderInputField("email", "Email")}
+          {renderInputField("email", "Email", false, 'email')}
+          {renderInputField("phone", "Phone")}
           {renderInputField("website", "Website")}
           <div className="flex gap-4">
             <button className="py-2 px-4 rounded-md border" onClick={resetSender}>
@@ -48,5 +50,5 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default SenderModal;
 

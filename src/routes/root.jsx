@@ -7,13 +7,13 @@ import RecipientContext from "../context/recipient";
 import Layout from "../components/Layout";
 
 const initialSender = {
-  company: '',
+  firstName: '',
+  lastName: '',
   taxID: '',
   IBAN: '',
   PO: '',
-  firstName: '',
-  lastName: '',
   email: '',
+  phone: '',
   website: '',
 };
 

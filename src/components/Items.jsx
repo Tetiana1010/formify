@@ -57,11 +57,11 @@ const Items = () => {
       <div className="pt-4 w-full">
         <table className="table-auto w-full">
           <thead>
-            <tr className="bg-blue-700 text-white">
-              <th className="py-1 px-4 w-2/6">Item</th>
-              <th className="py-1 px-4 w-1/6">Quantity</th>
-              <th className="py-1 px-4 w-1/6">Rate</th>
-              <th className="py-1 px-4 w-1/6">Amount</th>
+            <tr className="bg-blue-700 text-white text-left">
+              <th className="py-1 px-3 w-2/6">Item</th>
+              <th className="py-1 px-3 w-1/6">Quantity</th>
+              <th className="py-1 px-3 w-1/6">Rate</th>
+              <th className="py-1 px-3 text-right w-1/6">Amount</th>
             </tr>
           </thead>
           <tbody>
