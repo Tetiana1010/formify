@@ -36,6 +36,13 @@ const SenderModal = () => {
           {renderInputField("email", "Email", false, 'email')}
           {renderInputField("phone", "Phone")}
           {renderInputField("website", "Website")}
+          <fieldset className="col-span-2 grid grid-cols-5 gap-4">
+            {renderInputField("apt", "Apartment")}
+            {renderInputField("street", "Street")}
+            {renderInputField("city", "City")}
+            {renderInputField("state", "State")}
+            {renderInputField("zip", "Zip code")}
+          </fieldset>
           <div className="flex gap-4">
             <button className="py-2 px-4 rounded-md border" onClick={resetSender}>
               Cancel

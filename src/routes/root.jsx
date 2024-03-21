@@ -1,62 +1,13 @@
 import { useState } from "react";
 
+import useSenderState from "../hooks/useSenderState";
+import useRecipientState from "../hooks/useRecipientState";
+
 import ModalContext from "../context/modal";
 import SenderContext from "../context/sender";
 import RecipientContext from "../context/recipient";
 
 import Layout from "../components/Layout";
-
-const initialSender = {
-  firstName: '',
-  lastName: '',
-  taxID: '',
-  IBAN: '',
-  PO: '',
-  email: '',
-  phone: '',
-  website: '',
-};
-
-const initialRecipient = {
-  company: '',
-  taxID: '',
-  IBAN: '',
-  PO: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  website: '',
-};
-
-const useSenderState = () => {
-  const [sender, setSender] = useState(initialSender);
-
-  const handleSenderChange = (e)  => {
-    const { value, name } = e.target;
-    setSender(prevSender => ({ ...prevSender, [name]: value }));
-  };
-
-  const resetSender = () => {
-    setSender(initialSender);
-  };
-
-  return { sender, handleSenderChange, resetSender };
-};
-
-const useRecipientState = () => {
-  const [recipient, setRecipient] = useState(initialRecipient);
-
-  const handleRecipientChange = (e)  => {
-    const { value, name } = e.target;
-    setRecipient(prevSender => ({ ...prevSender, [name]: value }));
-  };
-
-  const resetRecipient = () => {
-    setRecipient(initialSender);
-  };
-
-  return { recipient, handleRecipientChange, resetRecipient };
-};
 
 export default function Root() {
   const [modal, setModal] = useState(false);

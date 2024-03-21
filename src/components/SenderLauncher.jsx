@@ -1,14 +1,37 @@
 import React, { useContext } from "react";
-
 import ModalContext from '../context/modal';
-import SenderModal from "./SenderModal"
 import SenderContext from "../context/sender";
+import SenderModal from "./SenderModal";
 
-const SenderLauncher  = () => {
+const SenderLauncher = () => {
   const { modal, setModal } = useContext(ModalContext);
   const { sender } = useContext(SenderContext);
+  const { firstName, lastName, taxID, IBAN, PO, phone, website, email } = sender;
 
-  const {  firstName, lastName, taxID, IBAN, PO, website } = sender;
+  const renderSenderInfo = () => {
+    if (firstName.length > 1 && lastName.length > 1) {
+      return (
+        <>
+          <h3 className="text-lg font-bold">{firstName} {lastName}</h3>
+          <ul>
+            {taxID && <li><b>Tax ID:</b> {taxID}</li>}
+            {IBAN && <li><b>IBAN:</b> {IBAN}</li>}
+            {PO && <li><b>PO:</b> {PO}</li>}
+            {email && <li><b>Email:</b> {email}</li>}
+            {phone && <li><b>Tel:</b> {phone}</li>}
+            {website && <li><b>Web:</b> {website}</li>}
+          </ul>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h3>Sender name</h3>
+          <p className="text-sm">Sender contact details</p>
+        </>
+      );
+    }
+  };
 
   return (
     <>
@@ -17,12 +40,9 @@ const SenderLauncher  = () => {
         onClick={() => setModal(!modal)}
       >
         <h2 className="pb-2">From</h2>
-        <h3 className="font-semibold">{firstName.length > 1 && lastName.length > 1 ? firstName + ' '  + lastName : 'Sender name'}</h3>
-        <p className="text-sm">Sender contact details</p>
+        {renderSenderInfo()}
       </div>
-      {modal && ( 
-         <SenderModal /> 
-      )}
+      {modal && <SenderModal />}
     </>
   );
 };
